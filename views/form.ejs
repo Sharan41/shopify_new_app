@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Display Username</title>
+</head>
+<body>
+  <h1>Enter your name</h1>
+  <form method="POST">
+    <input type="text" name="username" placeholder="Your Name" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <% if (username) { %>
+    <h2>Hello, <%= username %>!</h2>
+  <% } %>
+
+  <hr>
+  <a href="/download" target="_blank"><button>Download Names as CSV</button></a>
+</body>
+</html>
