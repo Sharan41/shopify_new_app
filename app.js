@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/shopifyapp'
 
 // Show login page
 
-const path = require('path');
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
