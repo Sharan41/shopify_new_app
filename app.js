@@ -82,9 +82,20 @@ app.post('/login', async (req, res) => {
 
 // Dashboard
 app.get('/dashboard', async (req, res) => {
-  if (!req.session.userId) return res.redirect('/login');
-  const user = await User.findById(req.session.userId);
-  res.render('dashboard', { username: user.userId, downloads: user.downloadedFiles });
+  if (!req.session.userId) {
+    return res.redirect('/login');
+  }
+
+  try {
+    const user = await User.findById(req.session.userId);
+    res.render('dashboard', {
+      userId: user.userId,
+      downloadedFiles: user.downloadedFiles
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error while loading dashboard.");
+  }
 });
 
 // Add downloaded file
