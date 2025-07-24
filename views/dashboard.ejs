@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+  <h2>Welcome <%= userId %></h2>
+
+  <form method="POST" action="/download">
+    <input type="text" name="fileName" placeholder="Enter file name" required />
+    <button type="submit">Add Download</button>
+  </form>
+
+  <h3>Your Downloads</h3>
+  <ul>
+    <% downloadedFiles.forEach(file => { %>
+      <li><%= file %></li>
+    <% }) %>
+  </ul>
+
+  <form method="POST" action="/logout">
+    <button type="submit">Logout</button>
+  </form>
+</body>
+</html>
