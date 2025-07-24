@@ -28,6 +28,19 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/shopifyapp'
   .catch(err => console.error(err));
 
 // Show login page
+
+const path = require('path');
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.get('/', (req, res) => {
+  res.render('login');
+});
+
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
 app.get('/login', (req, res) => {
   res.render('login', { username: null, error: null });
 });
